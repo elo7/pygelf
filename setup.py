@@ -1,5 +1,8 @@
 from setuptools import setup
 
+requirements = [
+    "kafka-python==1.4.6"
+]
 
 setup(
     name='pygelf',
@@ -9,6 +12,7 @@ setup(
     keywords='logging udp tcp ssl tls graylog2 graylog gelf',
     author='Ivan Mukhin',
     author_email='muhin.ivan@gmail.com',
+    install_requirements=requirements,
     url='https://github.com/keeprocking/pygelf',
     long_description=open('README.rst').read(),
     license='MIT',
