@@ -6,7 +6,7 @@ requirements = [
 
 setup(
     name='pygelf',
-    version='0.3.5',
+    version='0.3.7',
     packages=['pygelf'],
     description='Logging handlers with GELF support',
     keywords='logging udp tcp ssl tls graylog2 graylog gelf',
