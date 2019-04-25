@@ -7,9 +7,10 @@ except ImportError:
     import http.client as httplib
 
 from logging.handlers import SocketHandler, DatagramHandler
+from logging import StreamHandler
 from logging import Handler as LoggingHandler
 from pygelf import gelf
-
+from pygelf.connectors.KafkaConnector import KafkaConnector
 
 class BaseHandler(object):
     def __init__(self, debug=False, version='1.1', include_extra_fields=False, compress=False,
@@ -159,3 +160,27 @@ class GelfHttpHandler(BaseHandler, LoggingHandler):
         data = self.convert_record_to_gelf(record)
         connection = httplib.HTTPConnection(host=self.host, port=self.port, timeout=self.timeout)
         connection.request('POST', self.path, data, self.headers)
+
+class GelfKafkaHandler(BaseHandler, StreamHandler):
+
+    def __init__(self, bootstrap_servers, topic, producer_options, compress=False, **kwargs):
+        """
+        Logging handler that transforms each record into GELF (graylog extended log format) and sends it to a designated Kafka topic.
+
+        :param bootstrap_servers: The Kafka servers the message will be sent to
+        :param topic: Target topic
+        :param producer_options: A dictionary containing producer options (see https://kafka-python.readthedocs.io/en/master/apidoc/KafkaProducer.html for more information)
+        """
+        StreamHandler.__init__(self)
+        BaseHandler.__init__(self, compress=compress, **kwargs)
+
+        # We need to append bootstrap_servers here because KafkaProducer accepts kwargs as an argument
+        producer_options["bootstrap_servers"] = bootstrap_servers
+
+        self.topic = topic
+
+        self.kafka_broker = KafkaConnector(**producer_options)
+
+    def emit(self, record):
+        msg = self.convert_record_to_gelf(record)
+        self.kafka_broker.send(msg, self.topic)

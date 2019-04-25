@@ -1,13 +1,11 @@
 pygelf
 ======
-|travis| |coveralls| |pypi|
+|travis| |coveralls|
 
-.. |travis| image:: https://travis-ci.org/keeprocking/pygelf.svg?branch=master
-    :target: https://travis-ci.org/keeprocking/pygelf
-.. |pypi| image:: https://badge.fury.io/py/pygelf.svg
-    :target: https://pypi.python.org/pypi/pygelf
-.. |coveralls| image:: https://coveralls.io/repos/github/keeprocking/pygelf/badge.svg?branch=master
-    :target: https://coveralls.io/github/keeprocking/pygelf?branch=master
+.. |travis| image:: https://travis-ci.org/elo7/pygelf.svg?branch=elo7
+    :target: https://travis-ci.org/elo7/pygelf
+.. |coveralls| image:: https://coveralls.io/repos/github/elo7/pygelf/badge.svg?branch=elo7
+    :target: https://coveralls.io/github/elo7/pygelf?branch=elo7
 
 
 Python logging handlers with GELF (Graylog Extended Log Format) support.
@@ -59,7 +57,7 @@ According to the GELF spec, each message has the following mandatory fields:
 
 .. _syslog-compliant: https://en.wikipedia.org/wiki/Syslog#Severity_level
 
-In debug mode (when handler was created with debug=True option) each message contains some extra fields (which are pretty self-explanatory): 
+In debug mode (when handler was created with debug=True option) each message contains some extra fields (which are pretty self-explanatory):
 
 - **_file**
 - **_line**

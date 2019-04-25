@@ -1,48 +1,85 @@
 {
+    "name": "Inputs",
+    "description": "All inputs",
+    "category": "Configuration",
     "inputs": [
         {
-            "title": "tcp",
-            "configuration": {
-                "bind_address": "0.0.0.0",
-                "port": 12201
-            },
-            "type": "org.graylog2.inputs.gelf.tcp.GELFTCPInput",
-            "global": true
-        },
-        {
-            "title": "udp",
-            "configuration": {
-                "bind_address": "0.0.0.0",
-                "port": 12202
-            },
-            "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput",
-            "global": true
-        },
-        {
+            "id": "5cbf20c8adbe1d000a621e85",
             "title": "http",
             "configuration": {
                 "bind_address": "0.0.0.0",
                 "port": 12203
             },
+            "static_fields": {},
             "type": "org.graylog2.inputs.gelf.http.GELFHttpInput",
-            "global": true
+            "global": true,
+            "extractors": []
         },
         {
-            "title": "tls",
+            "id": "5cbf20c8adbe1d000a621e8e",
+            "title": "tcp",
             "configuration": {
                 "bind_address": "0.0.0.0",
+                "port": 12201
+            },
+            "static_fields": {},
+            "type": "org.graylog2.inputs.gelf.tcp.GELFTCPInput",
+            "global": true,
+            "extractors": []
+        },
+        {
+            "id": "5cbf2177adbe1d000a621f86",
+            "title": "Kafka",
+            "configuration": {
+                "topic_filter": "^logs$",
+                "fetch_wait_max": 100,
+                "offset_reset": "largest",
+                "zookeeper": "kafka:2181",
+                "throttling_allowed": false,
+                "fetch_min_bytes": 5,
+                "threads": 2,
+                "override_source": null,
+                "decompress_size_limit": 8388608
+            },
+            "static_fields": {},
+            "type": "org.graylog2.inputs.gelf.kafka.GELFKafkaInput",
+            "global": true,
+            "extractors": []
+        },
+        {
+            "id": "5cbf20c8adbe1d000a621e8c",
+            "title": "tls",
+            "configuration": {
                 "port": 12204,
                 "tls_enable": true,
-                "tls_cert_file": "/usr/share/graylog/data/cert.pem",
                 "tls_key_file": "/usr/share/graylog/data/key.pem",
-                "tls_key_password": "secret"
+                "tls_key_password": "secret",
+                "bind_address": "0.0.0.0",
+                "tls_cert_file": "/usr/share/graylog/data/cert.pem"
             },
+            "static_fields": {},
             "type": "org.graylog2.inputs.gelf.tcp.GELFTCPInput",
-            "global": true
+            "global": true,
+            "extractors": []
+        },
+        {
+            "id": "5cbf20c9adbe1d000a621e91",
+            "title": "udp",
+            "configuration": {
+                "bind_address": "0.0.0.0",
+                "port": 12202
+            },
+            "static_fields": {},
+            "type": "org.graylog2.inputs.gelf.udp.GELFUDPInput",
+            "global": true,
+            "extractors": []
         }
     ],
     "streams": [],
     "outputs": [],
     "dashboards": [],
-    "grok_patterns": []
+    "grok_patterns": [],
+    "lookup_tables": [],
+    "lookup_caches": [],
+    "lookup_data_adapters": []
 }
