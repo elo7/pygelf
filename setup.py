@@ -6,7 +6,7 @@ requirements = [
 
 setup(
     name='pygelf',
-    version='0.3.8',
+    version='0.3.9',
     description='Logging handlers with GELF support',
     keywords='logging udp tcp ssl tls graylog2 graylog gelf kafka',
     author='Ivan Mukhin',
