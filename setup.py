@@ -7,14 +7,14 @@ requirements = [
 setup(
     name='pygelf',
     version='0.3.8',
-    packages=['pygelf'],
     description='Logging handlers with GELF support',
-    keywords='logging udp tcp ssl tls graylog2 graylog gelf',
+    keywords='logging udp tcp ssl tls graylog2 graylog gelf kafka',
     author='Ivan Mukhin',
     author_email='muhin.ivan@gmail.com',
     install_requirements=requirements,
     url='https://github.com/keeprocking/pygelf',
     long_description=open('README.rst').read(),
+    packages=['pygelf', 'pygelf.connectors'],
     license='MIT',
     classifiers=[
         'Intended Audience :: Developers',
